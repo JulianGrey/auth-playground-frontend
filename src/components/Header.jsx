@@ -1,12 +1,19 @@
-import { useAuth } from "../context/AuthContext";
+import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+
+import styles from './Header.module.scss';
 
 export default function Header() {
   const { loggedIn, login, logout } = useAuth();
 
   return (
-    <>
+    <div className={styles.header}>
       <h1>Auth Playground</h1>
-      { loggedIn ? <button onClick={logout}>Log out</button> : <button onClick={login}>Log in</button> }
-    </>
+      {
+        loggedIn
+          ? <button onClick={logout}>Log out</button>
+          : <Link to='/login'><button onClick={login}>Log in</button></Link>
+      }
+    </div>
   );
 }
