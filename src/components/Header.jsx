@@ -4,14 +4,14 @@ import { useAuth } from '../context/AuthContext';
 import styles from './Header.module.scss';
 
 export default function Header() {
-  const { loggedIn, logout } = useAuth();
+  const { loggedIn, handleLoggedInStatus } = useAuth();
 
   return (
     <div className={styles.header}>
-      <h1>Auth Playground</h1>
+      <Link to='/'>Auth Playground</Link>
       {
         loggedIn
-          ? <button onClick={logout}>Log out</button>
+          ? <button onClick={handleLoggedInStatus(false)}>Log out</button>
           : <Link to='/login'><button>Log in</button></Link>
       }
     </div>

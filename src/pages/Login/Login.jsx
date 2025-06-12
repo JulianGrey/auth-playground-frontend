@@ -4,6 +4,10 @@ export default function Login() {
   return (
     <>
       <div className={styles.login}>
+        <div className={styles['registered-status']}>
+          <span>Existing user</span>
+          <span>New user</span>
+        </div>
         <div className={`${styles['form-input']} ${styles['login-input']}`}>
           <label className={styles['form-login']} htmlFor='form-login'>Login</label>
           <input type="text" name="form-login" placeholder="User name" />

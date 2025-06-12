@@ -14,4 +14,13 @@
     display: block;
     margin-bottom: 4px;
   }
+
+  .registered-status {
+    display: flex;
+    justify-content: space-around;
+
+    span {
+      cursor: pointer;
+    }
+  }
 }
