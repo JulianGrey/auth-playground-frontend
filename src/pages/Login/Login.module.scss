@@ -21,6 +21,10 @@
 
     span {
       cursor: pointer;
+
+      &.active {
+        color: green;
+      }
     }
   }
 }
