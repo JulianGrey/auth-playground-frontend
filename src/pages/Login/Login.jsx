@@ -33,7 +33,7 @@ export default function Login() {
           <input type="text" name="form-password-confirm" placeholder="Confirm Password" />
         </div>
       }
-      { existing ? <button>Login</button> : <button>Register</button> }
+      { existing ? <button>Log in</button> : <button>Register</button> }
     </div>
   );
 }
