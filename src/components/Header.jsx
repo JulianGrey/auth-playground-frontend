@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import styles from './Header.module.scss';
 
 export default function Header() {
-  const { loggedIn, login, logout } = useAuth();
+  const { loggedIn, logout } = useAuth();
 
   return (
     <div className={styles.header}>
@@ -12,7 +12,7 @@ export default function Header() {
       {
         loggedIn
           ? <button onClick={logout}>Log out</button>
-          : <Link to='/login'><button onClick={login}>Log in</button></Link>
+          : <Link to='/login'><button>Log in</button></Link>
       }
     </div>
   );
