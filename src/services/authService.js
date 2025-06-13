@@ -1,5 +1,16 @@
 const API_URL = 'http://localhost:3001';
 
+export async function checkAuth() {
+  const res = await fetch(`${API_URL}/user`, {
+    credentials: 'include'
+  });
+  if (res.ok) {
+    return await res.json();
+  } else {
+    return null;
+  }
+}
+
 export async function login(username, password) {
   const res = await fetch(`${API_URL}/login`, {
     method: 'POST',
