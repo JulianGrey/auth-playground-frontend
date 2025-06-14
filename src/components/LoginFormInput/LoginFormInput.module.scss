@@ -1,0 +1,11 @@
+.form-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+
+}
+
+.form-login, .form-password {
+  display: block;
+  margin-bottom: 4px;
+}
