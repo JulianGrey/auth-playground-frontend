@@ -5,6 +5,19 @@ import { login, register } from '../../services/authService';
 
 import styles from './Login.module.scss';
 
+function LoginFormInput({label, value, onChange, type = 'text', children}) {
+  return (
+    <div className={`${styles['form-input']} ${styles['login-input']}`}>
+      <label className={styles['form-login']}>{ label }</label>
+      <input
+        type={type}
+        placeholder={label}
+        onChange={onChange}
+        value={value}
+      />{ children }</div>
+  );
+}
+
 export default function Login() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [existing, setExisting] = useState(true);
@@ -75,41 +88,31 @@ export default function Login() {
           onClick={() => handleExisting(false)}
         >New user</span>
       </div>
-      <div className={`${styles['form-input']} ${styles['login-input']}`}>
-        <label className={styles['form-login']} htmlFor='form-login'>User name</label>
-        <input
-          type="text"
-          name="form-login"
-          placeholder="User name"
-          onChange={handleUsername}
-          value={username}
-        />
+      <LoginFormInput
+        label='User name'
+        onChange={handleUsername}
+        value={username}
+      >
         { existing && loginClicked && !username && <span className={styles.error}>{noUsernameErrorMessage}</span> }
         { !existing && registerClicked && !username && <span className={styles.error}>{noUsernameErrorMessage}</span> }
-      </div>
-      <div className={`${styles['form-input']} ${styles['password-input']}`}>
-        <label className={styles['form-password']} htmlFor='form-password'>Password</label>
-        <input
-          type="password"
-          name="form-password"
-          placeholder="Password"
-          onChange={handlePassword}
-          value={password}
-        />
+      </LoginFormInput>
+      <LoginFormInput
+        label='Password'
+        onChange={handlePassword}
+        type='password'
+        value={password}
+      >
         { existing && loginClicked && !password && <span className={styles.error}>{noPasswordErrorMessage}</span> }
         { !existing && registerClicked && !password && <span className={styles.error}>{noPasswordErrorMessage}</span> }
-      </div>
-      { !existing && <div className={`${styles['form-input']} ${styles['password-confirm-input']}`}>
-          <label className={styles['form-password-confirm']} htmlFor='form-password-confirm'>Confirm Password</label>
-          <input
-            type="password"
-            name="form-password-confirm"
-            placeholder="Confirm Password"
-            onChange={handleConfirmPassword}
-            value={confirmPassword}
-          />
+      </LoginFormInput>
+      {
+        !existing && <LoginFormInput
+          label='Confirm Password'
+          onChange={handleConfirmPassword}
+          value={confirmPassword}
+        >
           { !existing && registerClicked && !confirmPassword && <span className={styles.error}>{noConfirmPasswordErrorMessage}</span> }
-        </div>
+        </LoginFormInput>
       }
       {
         existing
