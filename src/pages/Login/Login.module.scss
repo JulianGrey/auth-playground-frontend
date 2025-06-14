@@ -3,6 +3,12 @@
   margin: auto;
   width: 500px;
 
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+
+
   .form-input {
     display: flex;
     flex-direction: column;
